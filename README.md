@@ -1,10 +1,17 @@
 # Nordkraft CLI
 
-> Green, local, secure cloud made simple
+> Zero-trust container cloud management made simple
+
+> [!WARNING]  
+> **🚧 Active Development Notice**  
+> Nordkraft CLI is currently in active development and friendly user testing phase. This tool is **not yet ready for production use**. Features may change, and breaking changes can occur between releases. Use at your own risk and expect potential instability.
+> 
+> For production workloads, please wait for the stable v1.0.0 release.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Latest Release](https://img.shields.io/github/v/release/ft-karlsson/nordkraft-io)](https://github.com/ft-karlsson/nordkraft-io/releases/latest)
 [![Platform Support](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)](https://github.com/ft-karlsson/nordkraft-io/releases/latest)
+[![Development Status](https://img.shields.io/badge/status-alpha-orange)](https://github.com/ft-karlsson/nordkraft-io)
 
 Nordkraft CLI provides secure, zero-trust access to container cloud infrastructure. Deploy, manage, and scale containers through an encrypted WireGuard tunnel with built-in authentication.
 
