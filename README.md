@@ -18,9 +18,14 @@ Nordkraft CLI provides secure, zero-trust access to container cloud infrastructu
 ## ⚡ Quick Start
 
 ### One-Command Installation
-
+#### macOS
 ```bash
 curl -fsSL https://get.nordkraft.io/install.sh | sh
+```
+
+#### linux
+```bash
+bash <(curl -fsSL https://get.nordkraft.io/install.sh)
 ```
 
 ### Alternative Installation Methods
