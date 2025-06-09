@@ -40,7 +40,7 @@ print_info() {
 
 print_debug() {
     if [ "${DEBUG:-}" = "1" ]; then
-        echo -e "${CYAN}[DEBUG]${NC} $1"
+        echo -e "${CYAN}[DEBUG]${NC} $1" >&2
     fi
 }
 
@@ -114,7 +114,7 @@ find_binary() {
     # List all files to debug
     if [ "${DEBUG:-}" = "1" ]; then
         print_debug "Contents of extracted archive:"
-        find "${temp_dir}" -type f -exec ls -la {} \;
+        find "${temp_dir}" -type f -exec ls -la {} \; >&2
     fi
     
     # Try different possible binary names/locations
@@ -153,7 +153,7 @@ find_binary() {
     # If we still haven't found it, list what we do have
     print_error "Could not find nordkraft binary in extracted archive"
     print_error "Archive contents:"
-    find "${temp_dir}" -type f | head -10
+    find "${temp_dir}" -type f | head -10 >&2
     
     return 1
 }
