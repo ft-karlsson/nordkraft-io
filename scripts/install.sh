@@ -38,6 +38,12 @@ print_info() {
     echo -e "${BLUE}ℹ${NC} $1"
 }
 
+print_debug() {
+    if [ "${DEBUG:-}" = "1" ]; then
+        echo -e "${CYAN}[DEBUG]${NC} $1"
+    fi
+}
+
 # Function to detect OS and architecture
 detect_platform() {
     local os=""
@@ -97,6 +103,61 @@ check_dependencies() {
     print_status "Dependencies OK"
 }
 
+# Function to find binary in extracted directory
+find_binary() {
+    local temp_dir="$1"
+    local platform="$2"
+    
+    print_debug "Looking for binary in: ${temp_dir}"
+    print_debug "Platform: ${platform}"
+    
+    # List all files to debug
+    if [ "${DEBUG:-}" = "1" ]; then
+        print_debug "Contents of extracted archive:"
+        find "${temp_dir}" -type f -exec ls -la {} \;
+    fi
+    
+    # Try different possible binary names/locations
+    local possible_paths=(
+        "${temp_dir}/${BINARY_NAME}"
+        "${temp_dir}/nordkraft-${platform}"
+        "${temp_dir}/bin/${BINARY_NAME}"
+        "${temp_dir}/bin/nordkraft-${platform}"
+    )
+    
+    # Also search for any executable file named nordkraft*
+    local found_binaries=$(find "${temp_dir}" -name "nordkraft*" -type f -executable 2>/dev/null || true)
+    if [ -n "$found_binaries" ]; then
+        print_debug "Found potential binaries: $found_binaries"
+        for binary in $found_binaries; do
+            possible_paths+=("$binary")
+        done
+    fi
+    
+    # Check each possible path
+    for path in "${possible_paths[@]}"; do
+        print_debug "Checking: $path"
+        if [ -f "$path" ] && [ -x "$path" ]; then
+            print_debug "Found executable binary: $path"
+            echo "$path"
+            return 0
+        elif [ -f "$path" ]; then
+            print_debug "Found file but not executable: $path"
+            # Make it executable and return
+            chmod +x "$path"
+            echo "$path"
+            return 0
+        fi
+    done
+    
+    # If we still haven't found it, list what we do have
+    print_error "Could not find nordkraft binary in extracted archive"
+    print_error "Archive contents:"
+    find "${temp_dir}" -type f | head -10
+    
+    return 1
+}
+
 # Function to download and install
 install_nordkraft() {
     local platform=$(detect_platform)
@@ -111,25 +172,46 @@ install_nordkraft() {
     if ! curl -fsSL "${download_url}" -o "${temp_file}"; then
         print_error "Failed to download nordkraft binary"
         print_error "URL: ${download_url}"
+        
+        # Try to check if the release exists
+        print_info "Checking if release exists..."
+        if curl -fsSL --head "${download_url}" >/dev/null 2>&1; then
+            print_error "Release exists but download failed"
+        else
+            print_error "Release not found - this platform might not be supported yet"
+            print_info "Available releases: https://github.com/${GITHUB_REPO}/releases"
+        fi
+        
         exit 1
     fi
     
-    print_status "Downloaded nordkraft binary"
+    print_status "Downloaded nordkraft binary ($(du -h "${temp_file}" | cut -f1))"
     
     # Extract the binary
+    print_info "Extracting archive..."
     if ! tar -xzf "${temp_file}" -C "${temp_dir}"; then
         print_error "Failed to extract nordkraft binary"
+        print_error "The downloaded file might be corrupted"
         exit 1
     fi
     
     print_status "Extracted binary"
+    
+    # Find the actual binary
+    local binary_path
+    if ! binary_path=$(find_binary "${temp_dir}" "${platform}"); then
+        print_error "Could not locate nordkraft binary in extracted files"
+        exit 1
+    fi
+    
+    print_status "Located binary at: ${binary_path}"
     
     # Check if we have write permission to install directory
     if [ ! -w "$(dirname "${INSTALL_DIR}")" ]; then
         print_warning "Need sudo permission to install to ${INSTALL_DIR}"
         
         # Install with sudo
-        if ! sudo mv "${temp_dir}/${BINARY_NAME}" "${INSTALL_DIR}/${BINARY_NAME}"; then
+        if ! sudo cp "${binary_path}" "${INSTALL_DIR}/${BINARY_NAME}"; then
             print_error "Failed to install nordkraft to ${INSTALL_DIR}"
             exit 1
         fi
@@ -141,7 +223,7 @@ install_nordkraft() {
         fi
     else
         # Install without sudo
-        if ! mv "${temp_dir}/${BINARY_NAME}" "${INSTALL_DIR}/${BINARY_NAME}"; then
+        if ! cp "${binary_path}" "${INSTALL_DIR}/${BINARY_NAME}"; then
             print_error "Failed to install nordkraft to ${INSTALL_DIR}"
             exit 1
         fi
@@ -168,6 +250,7 @@ verify_installation() {
     else
         print_error "Installation verification failed"
         print_error "nordkraft command not found in PATH"
+        print_info "Make sure ${INSTALL_DIR} is in your PATH"
         return 1
     fi
 }
@@ -192,11 +275,20 @@ show_next_steps() {
     echo "• WireGuard setup: https://docs.nordkraft.io/wireguard"
     echo "• Issues: https://github.com/ft-karlsson/nordkraft-io/issues"
     echo ""
+    echo -e "${YELLOW}Note:${NC} If nordkraft command is not found, make sure ${INSTALL_DIR} is in your PATH"
+    echo -e "Add this to your shell profile: ${YELLOW}export PATH=\"${INSTALL_DIR}:\$PATH\"${NC}"
+    echo ""
 }
 
 # Main installation flow
 main() {
     print_info "Starting Nordkraft CLI installation..."
+    
+    # Enable debug mode if requested
+    if [ "${1:-}" = "--debug" ] || [ "${DEBUG:-}" = "1" ]; then
+        export DEBUG=1
+        print_debug "Debug mode enabled"
+    fi
     
     # Check if already installed
     if command_exists nordkraft; then
@@ -217,6 +309,7 @@ main() {
         show_next_steps
     else
         print_error "Installation failed verification"
+        print_info "Try running with debug mode: curl -fsSL https://get.nordkraft.io/install.sh | DEBUG=1 sh"
         exit 1
     fi
 }
