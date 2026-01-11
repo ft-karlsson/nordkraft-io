@@ -1,0 +1,36 @@
+/* NordKraft Docs - Custom Styles */
+
+:root {
+  --md-primary-fg-color: #22c55e;
+  --md-primary-fg-color--light: #4ade80;
+  --md-primary-fg-color--dark: #16a34a;
+  --md-accent-fg-color: #4ade80;
+}
+
+/* Code blocks */
+.highlight code {
+  font-size: 0.85rem;
+}
+
+/* Custom admonitions */
+.md-typeset .admonition.note {
+  border-color: #4ade80;
+}
+
+.md-typeset .admonition.note > .admonition-title {
+  background-color: rgba(74, 222, 128, 0.1);
+}
+
+/* Footer */
+.md-footer {
+  background-color: #1a1a2e;
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+  font-size: 0.9rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: rgba(74, 222, 128, 0.1);
+}
