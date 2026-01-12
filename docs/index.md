@@ -46,9 +46,9 @@ nordkraft deploy nginx:alpine --port 80
 
 [→ Fuld guide: Din første container](getting-started.md)
 
-!!! note "Er den så tilgængeligt online?"
-    Nej. Den er ikke offentligt tilgængelig på internettet endnu. Du kan nå den via wireguard på dens lokale ip addresse.
-    Du skal speficikt bede om at åbne den for "verden" med "ingress". Se guide [her]("https://docs.nordkraft.io/getting-started/#trin-7-gr-den-tilgngelig-fra-internettet")
+!!! note "Er den så tilgængelig online?"
+    Nej. Den er ikke offentligt tilgængelig på internettet endnu. Du kan nå den via WireGuard på dens lokale IP-adresse.
+    Du skal specifikt bede om at åbne den for "verden" med ingress. Se [Trin 7: Gør den tilgængelig fra internettet](getting-started.md#trin-7-gor-den-tilgaengelig-fra-internettet).
 ---
 
 ## Populære guides
