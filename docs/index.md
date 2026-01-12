@@ -1,19 +1,19 @@
 # NordKraft Garage Cloud
 
-**Simple. Green. Secure.**
+**Enkelt. Bæredygtigt. sikkert.**
 
-Velkommen til dokumentationen for NordKraft Garage Cloud - en dansk container-platform bygget på genbrugt hardware.
+Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk container-platform bygget på genbrugt hardware.
 
 ---
 
-## Hvad er Garage Cloud?
+## Hvad er så en Garage Cloud?
 
-Garage Cloud er container hosting med fokus på:
+Nordkraft.io's Garage Cloud er container hosting med fokus på:
 
-- **Simplicitet** - Deploy med én kommando
-- **Bæredygtighed** - Kører på genbrugt hardware, drevet af grøn energi
-- **Sikkerhed** - WireGuard VPN, isolerede netværk, zero-trust arkitektur
-- **Gennemsigtighed** - Du ved præcis hvor din kode kører
+- **Simplicitet** - Udgiv apps med én kommando eller få komanndoer
+- **Bæredygtighed** - Kører på genbrugt hardware, grøn energi (i form af solceller) & anvendelse af eksisterende bygninger (ingen nye datacentre).
+- **Sikkerhed** - WireGuard VPN, isolerede netværk, zero-trust arkitektur, brug af kata containers.
+- **Gennemsigtighed** - Brug af opensource til at drive platformen, og Garage cloud er open source selv - få samme løsning til at køre derhjemme hos dig. Se open source kode her: [https://github.com/ft-karlsson/nordkraft-io](https://github.com/ft-karlsson/nordkraft-io)
 
 ---
 
@@ -28,7 +28,7 @@ curl -fsSL https://cloud.nordkraft.io/install.sh | sh
 
 ### 2. Forbind til VPN
 
-Import din WireGuard-konfiguration (modtaget via email) og forbind.
+Import din WireGuard-konfiguration (signup: [cloud.nordkraft.io](https://cloud.nordkraft.io)) og forbind.
 
 ### 3. Verificer forbindelse
 
@@ -46,6 +46,9 @@ nordkraft deploy nginx:alpine --port 80
 
 [→ Fuld guide: Din første container](getting-started.md)
 
+!!! note "Er den så tilgængeligt online?"
+    Nej. Den er ikke offentligt tilgængelig på internettet endnu. Du kan nå den via wireguard på dens lokale ip addresse.
+    Du skal speficikt bede om at åbne den for "verden" med "ingress". Se guide [her]("https://docs.nordkraft.io/getting-started/#trin-7-gr-den-tilgngelig-fra-internettet")
 ---
 
 ## Populære guides
@@ -78,12 +81,12 @@ nordkraft deploy nginx:alpine --port 80
 
 ## Brug for hjælp?
 
-- **Email:** support@nordkraft.io (besvaret af mennesker)
+- **Email:** frederikkarlsson@me.com
 - **GitHub Issues:** [github.com/ft-karlsson/nordkraft-io/issues](https://github.com/ft-karlsson/nordkraft-io/issues)
 
 ---
 
 <small>
 NordKraft Garage Cloud - Bygget i Ry, Danmark 🇩🇰<br>
-Kører på genbrugt Dell OptiPlex og Raspberry Pi hardware.
+Kører på genbrugt / refurbished Dell og Raspberry Pi hardware.
 </small>
