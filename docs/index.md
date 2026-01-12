@@ -12,7 +12,7 @@ Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk open sour
 
 Nordkraft.io's Garage Cloud er container hosting med fokus på:
 
-- **Simplicitet** - Udgiv apps med én kommando eller få komanndoer
+- **Enkelthed** - Udgiv apps med én kommando
 - **Bæredygtighed** - Kører på genbrugt hardware, grøn energi (i form af solceller) & anvendelse af eksisterende bygninger (ingen nye datacentre).
 - **Sikkerhed** - WireGuard VPN, isolerede netværk, zero-trust arkitektur, brug af kata containers.
 - **Gennemsigtighed** - Brug af opensource til at drive platformen, og Garage cloud er open source selv - få samme løsning til at køre derhjemme hos dig. Se open source kode her (IKKE ALT FRIGIVET ENDNU): [https://github.com/ft-karlsson/nordkraft-io](https://github.com/ft-karlsson/nordkraft-io) 
