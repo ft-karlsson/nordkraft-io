@@ -49,6 +49,33 @@ nordkraft deploy nginx:alpine --port 80
 !!! note "Er den så tilgængelig online?"
     Nej. Den er ikke offentligt tilgængelig på internettet endnu. Du kan nå den via WireGuard på dens lokale IP-adresse.
     Du skal specifikt bede om at åbne den for "verden" med ingress. Se [Trin 7: Gør den tilgængelig fra internettet](getting-started.md#trin-7-gor-den-tilgaengelig-fra-internettet).
+
+### 5. Se din container
+
+Find containerens IP-adresse:
+```bash
+nordkraft list
+```
+
+Output:
+```
+📦 Fetching containers...
+🐳 1 container(s):
+  NAME: app-ac75ce48-2771-462a-9b87-a0eaa46adb05
+    Image: docker.io/library/nginx:alpine
+    Status: Up 2 days
+    IPv4: 172.21.1.34
+    Ports: 80/tcp
+    Created: 2 days ago
+```
+
+Åbn i browser (mens du er på VPN):
+```bash
+# Eller åbn direkte i browser
+open http://172.21.1.34
+```
+
+🎉 **Du ser nu din container køre på Garage Cloud!**
 ---
 
 ## Populære guides
