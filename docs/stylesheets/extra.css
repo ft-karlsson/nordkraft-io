@@ -1,5 +1,10 @@
 /* NordKraft Docs - Custom Styles */
 
+/* Header styling - dark background for logo */
+.md-header {
+  background: #1e1e1e !important;
+}
+
 :root {
   --md-primary-fg-color: #22c55e;
   --md-primary-fg-color--light: #4ade80;
