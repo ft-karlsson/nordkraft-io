@@ -91,10 +91,10 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/ft-karlsson/nordkraft-io
     - icon: fontawesome/solid/envelope
-      link: mailto:support@nordkraft.io
+      link: mailto:frederikkarlsson@me.com
   generator: false
 
 extra_css:
   - stylesheets/extra.css
 
-copyright: Copyright &copy; 2025 NordKraft.io - Bygget på genbrugt hardware i Danmark 🇩🇰
+copyright: Copyright &copy; 2026 NordKraft.io - Bygget på genbrugt hardware i Danmark 🇩🇰
