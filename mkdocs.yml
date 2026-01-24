@@ -58,6 +58,7 @@ nav:
     - Sikkerhed: concepts/security.md
     - Netværk: concepts/networking.md
   - Troubleshooting:
+    - Kendte problemer: troubleshooting/known-issues.md
     - VPN problemer: troubleshooting/vpn.md
     - Container fejl: troubleshooting/containers.md
     - FAQ: troubleshooting/faq.md

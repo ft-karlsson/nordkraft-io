@@ -6,6 +6,20 @@ Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk open sour
 
 !!! note "Under udvikling"
     Platformen er stadig under aktiv udvikling og signup kun tilgængelig via invitation - smid mig en mail hvis du er interesseret
+    
+!!! success "Mark I Testing Complete (January 2026)"
+    Kernefeatures er testet og virker:
+    
+    - ✅ **Zero-trust authentication** - WireGuard VPN integration
+    - ✅ **Kata VM isolation** - Hardware-level container security
+    - ✅ **Dual-stack networking** - IPv4 + IPv6 via SLAAC
+    - ✅ **Persistent storage** - Data overlever genstarter
+    - ✅ **HTTPS ingress** - Automatisk Let's Encrypt TLS
+    - ✅ **Environment variables** - Fuld konfiguration support
+    - ✅ **Multi-node orchestration** - NATS-baseret message passing
+    
+    [Se fuld test rapport →](https://github.com/ft-karlsson/nordkraft-io/discussions)
+    
 ---
 
 ## Hvad er så en Garage Cloud?
@@ -97,12 +111,15 @@ open http://172.21.1.34
 | Handling | Kommando |
 |----------|----------|
 | Deploy container | `nordkraft deploy IMAGE --port PORT` |
+| Deploy med IPv6 | `nordkraft deploy IMAGE --port PORT --ipv6` |
 | Se containere | `nordkraft list` |
 | Se logs | `nordkraft logs NAVN` |
 | Stop container | `nordkraft stop NAVN` |
+| Start container | `nordkraft start NAVN` |
 | Slet container | `nordkraft rm NAVN` |
 | Aktiver HTTPS | `nordkraft ingress enable NAVN --subdomain X` |
-| Åbn IPv6 | `nordkraft ipv6 open NAVN` |
+| Åbn IPv6 firewall | `nordkraft ipv6 open NAVN` |
+| Se IPv6 status | `nordkraft ipv6 status NAVN` |
 
 [→ Fuld CLI reference](reference/cli.md)
 

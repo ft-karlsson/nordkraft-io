@@ -39,12 +39,19 @@ nordkraft deploy IMAGE [FLAG]
 
 | Flag | Kort | Default | Beskrivelse |
 |------|------|---------|-------------|
-| `--port` | `-p` | - | Port(s) containeren lytter på (påkrævet) |
+| `--port` | `-p` | - | Port(s) containeren lytter på (kan gentages) |
 | `--env` | `-e` | - | Miljøvariabel (kan gentages) |
-| `--cpu` | | `0.5` | CPU grænse i cores |
-| `--memory` | `-m` | `512m` | Hukommelsesgrænse |
-| `--persistent` | | `false` | Aktiver persistent storage |
+| `--cpu` | | `0.5` | CPU grænse i cores ⚠️ |
+| `--memory` | `-m` | `512m` | Hukommelsesgrænse ⚠️ |
+| `--persistence` | | `false` | Aktiver persistent storage |
+| `--volume-path` | | - | Sti til persistent storage (påkrævet med --persistence) |
+| `--ipv6` | | `false` | Allokér global IPv6 adresse |
 | `--name` | `-n` | auto | Brugerdefineret container navn |
+| `--garage` | | auto | Target garage (ry, aarhus, etc.) |
+| `--hardware` | | auto | Hardware præference (optiplex, raspi, mac-mini) |
+
+!!! warning "Kendte problemer"
+    **CPU/Memory limits:** Disse flag er implementeret men bliver ikke anvendt endnu (bug #1). Dette bliver rettet i næste opdatering.
 
 **Eksempler:**
 
@@ -142,6 +149,19 @@ Start en stoppet container.
 ```bash
 nordkraft start CONTAINER
 ```
+
+---
+
+### restart
+
+Genstart en container (stop + start).
+
+```bash
+nordkraft restart CONTAINER
+```
+
+!!! note "Kommer snart"
+    Restart kommandoen er under udvikling. I mellemtiden: brug `nordkraft stop NAVN` efterfulgt af `nordkraft start NAVN`.
 
 ---
 
