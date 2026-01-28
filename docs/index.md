@@ -7,7 +7,7 @@ Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk open sour
 !!! note "Under udvikling"
     Platformen er stadig under aktiv udvikling og signup kun tilgængelig via invitation - smid mig en mail hvis du er interesseret
     
-!!! Wuhu! "Mark I Testing færdig (January 2026)"
+!!! success "Mark I Testing færdig (January 2026)"
     Kernefeatures er testet og virker:
     
     - ✅ **Zero-trust authentication** - WireGuard VPN integration
