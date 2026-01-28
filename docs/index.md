@@ -7,18 +7,17 @@ Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk open sour
 !!! note "Under udvikling"
     Platformen er stadig under aktiv udvikling og signup kun tilgængelig via invitation - smid mig en mail hvis du er interesseret
     
-!!! success "Mark I Testing Complete (January 2026)"
+!!! Wuhu! "Mark I Testing færdig (January 2026)"
     Kernefeatures er testet og virker:
     
     - ✅ **Zero-trust authentication** - WireGuard VPN integration
     - ✅ **Kata VM isolation** - Hardware-level container security
     - ✅ **Dual-stack networking** - IPv4 + IPv6 via SLAAC
-    - ✅ **Persistent storage** - Data overlever genstarter
+    - ✅ **Persistent storage** - Data overlever genstart (lidt sjovere)
     - ✅ **HTTPS ingress** - Automatisk Let's Encrypt TLS
     - ✅ **Environment variables** - Fuld konfiguration support
     - ✅ **Multi-node orchestration** - NATS-baseret message passing
     
-    [Se fuld test rapport →](https://github.com/ft-karlsson/nordkraft-io/discussions)
     
 ---
 
@@ -91,7 +90,7 @@ Output:
 open http://172.21.1.34
 ```
 
-🎉 **Du ser nu din container køre på Garage Cloud!**
+🎉 **Du ser nu din container på Garage Cloud!**
 ---
 
 ## Populære guides
