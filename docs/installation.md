@@ -137,7 +137,7 @@ Du har modtaget en WireGuard-konfigurationsfil via email (`nordkraft.conf`).
 **Test forbindelse til API serveren:**
 
 ```bash
-# API serveren svarer kun på HTTP requests (ikke ping)
+# API serveren svarer kun på HTTP requests
 curl -s http://172.20.0.254:8001/api/status
 ```
 
@@ -146,10 +146,6 @@ Forventet output:
 ```json
 {"status":"online","timestamp":"2025-01-31T12:00:00Z"}
 ```
-
-!!! warning "Ping virker ikke"
-    API serveren svarer **ikke** på ping/ICMP requests - kun HTTP. 
-    Brug `curl` til at teste forbindelsen.
 
 ---
 
@@ -200,7 +196,7 @@ export PATH="$PATH:/usr/local/bin"
 - Tjek config-filen ikke er beskadiget
 - **GUI:** Prøv at deaktivere og genaktivere tunnelen
 - **Linux:** Kør `sudo wg-quick down nordkraft && sudo wg-quick up nordkraft`
-- Kontakt support@nordkraft.io med din config (uden private key!)
+- Kontakt <frederikkarlsson@me.com> med din config (uden private key!)
 
 ### Ingen handshake i WireGuard
 
