@@ -114,15 +114,42 @@ Du har modtaget en WireGuard-konfigurationsfil via email (`nordkraft.conf`).
 
 ### Bekræft forbindelse
 
-```bash
-# Tjek WireGuard status
-wg show
+=== "macOS/Windows (GUI)"
 
-# Tjek du kan nå API serveren
-ping 172.20.0.10
+    I WireGuard-appen, klik på din tunnel og tjek følgende:
+    
+    - **Latest handshake:** Skal vise tid (f.eks. "41 seconds ago")
+    - **Data received/sent:** Begge skal vise data (f.eks. "2.60 KiB / 1.95 KiB")
+    
+    !!! tip "Tjek handshake"
+        Hvis "Latest handshake" ikke vises eller er mere end 2 minutter gammel, 
+        prøv at deaktivere og genaktivere tunnelen.
+
+=== "Linux (CLI)"
+
+    ```bash
+    # Tjek WireGuard status (kræver sudo)
+    sudo wg show
+    ```
+    
+    Du burde se output med en aktiv peer og "latest handshake" inden for de sidste minutter.
+
+**Test forbindelse til API serveren:**
+
+```bash
+# API serveren svarer kun på HTTP requests (ikke ping)
+curl -s http://172.20.0.254:8001/api/status
 ```
 
-Du burde se svar fra `172.20.0.10`.
+Forventet output:
+
+```json
+{"status":"online","timestamp":"2025-01-31T12:00:00Z"}
+```
+
+!!! warning "Ping virker ikke"
+    API serveren svarer **ikke** på ping/ICMP requests - kun HTTP. 
+    Brug `curl` til at teste forbindelsen.
 
 ---
 
@@ -150,9 +177,10 @@ Du er klar! Gå til [Din første container](getting-started.md) for at deploye d
 
 ### "Connection refused" ved auth login
 
-1. Tjek VPN er aktiv: `wg show`
-2. Tjek du kan pinge API: `ping 172.20.0.10`
-3. Tjek firewall ikke blokerer WireGuard (UDP port 51820)
+1. **GUI (macOS/Windows):** Tjek i WireGuard-appen at tunnelen er aktiv og har et recent handshake
+2. **CLI (Linux):** Kør `sudo wg show` og tjek der er en aktiv peer med recent handshake
+3. Test HTTP forbindelse: `curl http://172.20.0.254:8001/api/status`
+4. Tjek firewall ikke blokerer WireGuard (UDP port 51820)
 
 ### "Command not found: nordkraft"
 
@@ -170,7 +198,17 @@ export PATH="$PATH:/usr/local/bin"
 
 - Tjek din internetforbindelse
 - Tjek config-filen ikke er beskadiget
+- **GUI:** Prøv at deaktivere og genaktivere tunnelen
+- **Linux:** Kør `sudo wg-quick down nordkraft && sudo wg-quick up nordkraft`
 - Kontakt support@nordkraft.io med din config (uden private key!)
+
+### Ingen handshake i WireGuard
+
+Hvis du ikke ser "Latest handshake" i GUI'en eller `wg show`:
+
+- Din firewall blokerer måske UDP port 51820 udgående
+- Prøv fra et andet netværk (nogle virksomhedsnetværk blokerer WireGuard)
+- Tjek at endpoint IP'en i din config er korrekt
 
 ### Geninstaller CLI
 
