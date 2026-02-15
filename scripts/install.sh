@@ -15,6 +15,7 @@ GITHUB_REPO="ft-karlsson/nordkraft-io"
 INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="nordkraft"
 BASE_URL="https://github.com/${GITHUB_REPO}/releases/latest/download"
+INVITE_TOKEN=""
 
 # Banner
 echo -e "${CYAN}🚀 Nordkraft CLI Installer${NC}"
@@ -191,33 +192,55 @@ show_next_steps() {
     echo ""
     echo -e "${GREEN}🎉 Installation Complete!${NC}"
     echo ""
-    echo -e "${CYAN}Next step:${NC}"
-    echo "  Run the setup command from your signup page:"
-    echo ""
-    echo -e "   ${YELLOW}nordkraft setup NKINVITE-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx${NC}"
-    echo ""
-    echo "  This will configure WireGuard and connect you automatically."
-    echo ""
+
+    if [ -n "${INVITE_TOKEN}" ]; then
+        echo -e "${CYAN}Running setup with your invite token...${NC}"
+        echo ""
+        nordkraft setup "${INVITE_TOKEN}"
+    else
+        echo -e "${CYAN}Next step:${NC}"
+        echo "  Run the setup command from your signup page:"
+        echo ""
+        echo -e "   ${YELLOW}nordkraft setup NKINVITE-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx${NC}"
+        echo ""
+        echo "  This will configure WireGuard and connect you automatically."
+        echo ""
+    fi
 }
 
 # Main
 main() {
     print_info "Starting installation..."
+
+    # Parse args: token is NKINVITE-..., --force is a flag
+    local force=false
+    for arg in "$@"; do
+        case "$arg" in
+            --force) force=true ;;
+            NKINVITE-*) INVITE_TOKEN="$arg" ;;
+        esac
+    done
     
     # Check if already installed
     if command_exists nordkraft; then
         local current_version=$(nordkraft --version 2>/dev/null || echo "unknown")
         print_status "Nordkraft already installed (${current_version})"
-        echo ""
-        echo -e "${CYAN}To update to latest version:${NC}"
-        echo -e "   ${YELLOW}nordkraft update${NC}"
-        echo ""
-        echo -e "${CYAN}To force reinstall:${NC}"
-        echo -e "   ${YELLOW}curl -fsSL https://cloud.nordkraft.io/install.sh | sh -s -- --force${NC}"
         
-        if [ "${1:-}" = "--force" ]; then
+        if [ "$force" = true ]; then
             print_warning "Force reinstall..."
+        elif [ -n "${INVITE_TOKEN}" ]; then
+            # Already installed but got a token — skip install, run setup
+            install_wireguard_tools
+            echo ""
+            echo -e "${CYAN}Running setup with your invite token...${NC}"
+            echo ""
+            nordkraft setup "${INVITE_TOKEN}"
+            exit 0
         else
+            echo ""
+            echo -e "${CYAN}To update to latest version:${NC}"
+            echo -e "   ${YELLOW}nordkraft update${NC}"
+            echo ""
             exit 0
         fi
     fi
