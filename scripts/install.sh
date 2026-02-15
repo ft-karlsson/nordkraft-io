@@ -80,6 +80,46 @@ check_dependencies() {
     print_status "Dependencies OK"
 }
 
+# Function to install WireGuard tools
+install_wireguard_tools() {
+    if command_exists wg; then
+        print_status "WireGuard tools already installed"
+        return 0
+    fi
+
+    print_info "Installing WireGuard tools..."
+
+    case "$(uname -s)" in
+        Darwin*)
+            if command_exists brew; then
+                brew install wireguard-tools 2>/dev/null
+            else
+                print_error "Homebrew required on macOS. Install from https://brew.sh"
+                exit 1
+            fi
+            ;;
+        Linux*)
+            if command_exists apt-get; then
+                sudo apt-get update -qq && sudo apt-get install -y -qq wireguard-tools
+            elif command_exists dnf; then
+                sudo dnf install -y wireguard-tools
+            elif command_exists pacman; then
+                sudo pacman -S --noconfirm wireguard-tools
+            else
+                print_error "Could not detect package manager. Install wireguard-tools manually."
+                exit 1
+            fi
+            ;;
+    esac
+
+    if command_exists wg; then
+        print_status "WireGuard tools installed"
+    else
+        print_error "WireGuard tools installation failed"
+        exit 1
+    fi
+}
+
 # Function to download and install
 install_nordkraft() {
     local platform=$(detect_platform)
@@ -151,18 +191,12 @@ show_next_steps() {
     echo ""
     echo -e "${GREEN}🎉 Installation Complete!${NC}"
     echo ""
-    echo -e "${CYAN}Next steps:${NC}"
-    echo "1. Configure WireGuard VPN connection"
-    echo "2. Test your connection:"
-    echo -e "   ${YELLOW}nordkraft auth login${NC}"
+    echo -e "${CYAN}Next step:${NC}"
+    echo "  Run the setup command from your signup page:"
     echo ""
-    echo -e "${CYAN}Quick commands:${NC}"
-    echo -e "   ${YELLOW}nordkraft help${NC}              Show all commands"
-    echo -e "   ${YELLOW}nordkraft deploy nginx${NC}      Deploy a container"
-    echo -e "   ${YELLOW}nordkraft list${NC}              List containers"
-    echo -e "   ${YELLOW}nordkraft update${NC}            Update CLI to latest"
+    echo -e "   ${YELLOW}nordkraft setup NKINVITE-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx${NC}"
     echo ""
-    echo -e "${CYAN}Docs:${NC} https://docs.nordkraft.io"
+    echo "  This will configure WireGuard and connect you automatically."
     echo ""
 }
 
@@ -190,6 +224,7 @@ main() {
     
     check_dependencies
     install_nordkraft
+    install_wireguard_tools
     
     if verify_installation; then
         show_next_steps
