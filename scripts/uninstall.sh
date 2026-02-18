@@ -26,7 +26,7 @@ echo ""
 
 # Confirm unless --force
 if [[ "$1" != "--force" ]]; then
-    read -p "Continue? [y/N] " -n 1 -r
+    read -p "Continue? [y/N] " -n 1 -r < /dev/tty
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         echo -e "${DIM}Cancelled.${NC}"
