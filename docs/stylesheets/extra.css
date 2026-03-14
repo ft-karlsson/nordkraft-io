@@ -140,22 +140,38 @@ body,
   border-bottom-color: var(--nk-emerald);
 }
 
-/* ── Code blocks — terminal look ──────────────────── */
+/* ── Typography refinements ────────────────────────── */
+.md-typeset {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+.md-typeset h1 { font-size: 1.6rem !important; }
+.md-typeset h2 { font-size: 1.1rem !important; }
+.md-typeset h3 { font-size: 0.9rem !important; }
+
+/* ── Code blocks — slimmer terminal look ───────────── */
 .md-typeset pre {
   background: var(--nk-surface) !important;
   border: 1px solid var(--nk-border) !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   overflow: hidden;
+  margin: 0.8em 0 !important;
 }
 
 .md-typeset pre > code {
   background: transparent !important;
-  font-size: 0.82rem !important;
-  line-height: 1.65 !important;
+  font-size: 0.76rem !important;
+  line-height: 1.6 !important;
   color: #e2e8f0 !important;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
-/* Terminal top bar on every code block */
+/* Terminal bar — slim */
 .md-typeset .highlight {
   position: relative;
 }
@@ -163,32 +179,35 @@ body,
 .md-typeset .highlight::before {
   content: '';
   display: block;
-  height: 34px;
+  height: 26px;
   background: var(--nk-surface-2);
   border-bottom: 1px solid var(--nk-border);
-  border-radius: 10px 10px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 
 .md-typeset .highlight::after {
   content: '';
   position: absolute;
-  top: 11px;
-  left: 14px;
-  width: 10px;
-  height: 10px;
+  top: 8px;
+  left: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #ef4444;
-  box-shadow: 16px 0 0 #eab308, 32px 0 0 #22c55e;
+  box-shadow: 13px 0 0 #eab308, 26px 0 0 #22c55e;
+  opacity: 0.8;
 }
 
-/* Inline code */
+/* Inline code — lighter weight */
 .md-typeset code {
   background: var(--nk-surface) !important;
   border: 1px solid var(--nk-border) !important;
-  border-radius: 4px !important;
+  border-radius: 3px !important;
   color: var(--nk-emerald) !important;
-  font-size: 0.83em !important;
-  padding: 0.1em 0.4em !important;
+  font-size: 0.8em !important;
+  font-weight: 400 !important;
+  padding: 0.08em 0.35em !important;
+  letter-spacing: 0.01em;
 }
 
 /* Syntax highlight colours */
