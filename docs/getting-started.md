@@ -2,13 +2,29 @@
 
 **Tidsforbrug:** Under 5 minutter.
 
-Før du starter: sørg for at VPN er forbundet og CLI er installeret. Tjek med `nordkraft auth login`.
+---
+
+## Før du starter
+
+Tre ting skal være på plads:
+
+1. **nordkraft.io konto** — opret på [cloud.nordkraft.io](https://cloud.nordkraft.io)
+2. **Installer CLI + forbind** — kør det kommando du fik i din velkomst-email:
+```bash
+curl -fsSL https://cloud.nordkraft.io/install.sh | sh -s NKINVITE-...
+```
+3. **Tjek at alt virker:**
+```bash
+nordkraft auth login
+```
+
+Ser du `✓ Sikker forbindelse etableret`? Perfekt — videre.
 
 ---
 
 ## Deploy Pacman 🕹️
 
-Lad os starte med noget sjovt. Et par kommandoer — og du spiller Pacman fra din egen cloud.
+Et par kommandoer — og du spiller Pacman fra din egen cloud.
 
 ```bash
 # 1. Deploy
@@ -16,11 +32,14 @@ nordkraft deploy ghcr.io/piebro/pacman-on-a-webpage:latest \
   -p 8080 \
   --name pacman
 
-# 2. Giv den et subdomain
+# 2. Giv den et subdomain (vælg dit eget hvis pacman er optaget)
 nordkraft ingress enable pacman --subdomain pacman --port 8080
 ```
 
 Åbn **https://pacman.nordkraft.cloud** — og spil. 🎮
+
+!!! tip "Subdomain optaget?"
+    Vælg dit eget — fx `--subdomain frederik-pacman`. Subdomainet skal bare være unikt på tværs af alle brugere.
 
 Det er alt. Din første container kører på dansk hardware bag HTTPS.
 
