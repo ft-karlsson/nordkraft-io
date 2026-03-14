@@ -45,9 +45,10 @@ nav:
     - Din første container: getting-started.md
     - Installation: installation.md
   - Guides:
-    - Deploy en webapp: guides/webapp.md
-    - Databaser: guides/databases.md
+    - Deploy din egen app: guides/webapp.md
     - Chat-server (Campfire / Mattermost): guides/chat.md
+    - Overvågning (Uptime Kuma): guides/monitoring.md
+    - Databaser: guides/databases.md
     - Environment variabler: guides/environment.md
     - Persistent storage: guides/storage.md
     - Custom domæner: guides/domains.md

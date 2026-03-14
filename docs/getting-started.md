@@ -442,10 +442,11 @@ nordkraft deploy myapp:v1 --port 3000 \
 
 ### Se flere eksempler
 
-- [Deploy en Node.js app](guides/webapp.md)
+- [Deploy din egen app med privat registry](guides/webapp.md)
+- [Deploy din egen chat-server (Campfire / Mattermost)](guides/chat.md)
+- [Overvåg dine apps med Uptime Kuma](guides/monitoring.md)
 - [Opsæt en database](guides/databases.md)
 - [Custom domæner](guides/domains.md)
-- [Deploy din egen chat-server (Campfire / Mattermost)](guides/chat.md)
 
 ---
 
