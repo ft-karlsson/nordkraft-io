@@ -47,12 +47,14 @@ nav:
   - Guides:
     - Deploy en webapp: guides/webapp.md
     - Databaser: guides/databases.md
+    - Chat-server (Campfire / Mattermost): guides/chat.md
     - Environment variabler: guides/environment.md
     - Persistent storage: guides/storage.md
     - Custom domæner: guides/domains.md
   - Reference:
     - CLI kommandoer: reference/cli.md
     - API: reference/api.md
+    - NordKraft til AI-assistenter: reference/llm.md
   - Koncepter:
     - Hvordan virker det?: concepts/how-it-works.md
     - Sikkerhed: concepts/security.md

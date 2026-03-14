@@ -445,6 +445,7 @@ nordkraft deploy myapp:v1 --port 3000 \
 - [Deploy en Node.js app](guides/webapp.md)
 - [Opsæt en database](guides/databases.md)
 - [Custom domæner](guides/domains.md)
+- [Deploy din egen chat-server (Campfire / Mattermost)](guides/chat.md)
 
 ---
 
