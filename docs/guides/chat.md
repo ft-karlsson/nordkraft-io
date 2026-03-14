@@ -1,6 +1,6 @@
 # Deploy din egen chat-server
 
-Træt af at betale for Slack måned efter måned? Her deployer du din egen private chat-server på NordKraft — i fuld ejerskab, på dansk hardware.
+Træt af at betale for Slack måned efter måned? Her deployer du din egen private chat-server på nordkraft.io — i fuld ejerskab, på dansk hardware.
 
 Vi gennemgår to muligheder:
 
@@ -114,4 +114,4 @@ nordkraft container logs mattermost --lines 20
 | Mattermost | ~400 MB | ~400 MB |
 | Postgres | ~80 MB | ~60 MB |
 
-Begge løsninger passer fint inden for NordKraft Test tier (4 GB RAM).
+Begge løsninger passer fint inden for nordkraft.io Test tier (4 GB RAM).

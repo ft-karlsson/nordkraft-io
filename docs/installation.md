@@ -1,18 +1,18 @@
 # Installation
 
-Sådan får du NordKraft CLI og VPN sat op på din maskine.
+Sådan får du nordkraft.io CLI og VPN sat op på din maskine.
 
 ---
 
 ## Forudsætninger
 
-- En NordKraft konto (du modtager invitation via email)
+- En nordkraft.io konto (du modtager invitation via email)
 - macOS, Linux eller Windows
 - Terminal/kommandolinje adgang
 
 ---
 
-## Trin 1: Installer NordKraft CLI
+## Trin 1: Installer nordkraft.io CLI
 
 ### One-liner installation (anbefalet)
 

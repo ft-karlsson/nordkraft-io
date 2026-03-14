@@ -1,8 +1,8 @@
-# NordKraft.io Garage Cloud
+# nordkraft.io Garage Cloud
 
 **Åbent. Bæredygtigt. sikkert.**
 
-Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk open source container-platform bygget på genbrugt hardware. 
+Velkommen til dokumentationen for nordkraft.io Garage Cloud - en dansk open source container-platform bygget på genbrugt hardware. 
 
 !!! note "Under udvikling"
     Platformen er stadig under aktiv udvikling og signup kun tilgængelig via invitation - smid mig en mail hvis du er interesseret
@@ -23,7 +23,7 @@ Velkommen til dokumentationen for NordKraft.io Garage Cloud - en dansk open sour
 
 ## Hvad er så en Garage Cloud?
 
-Nordkraft.io's Garage Cloud er container hosting med fokus på:
+nordkraft.io's Garage Cloud er container hosting med fokus på:
 
 - **Enkelthed** - Udgiv apps med én kommando
 - **Bæredygtighed** - Kører på genbrugt hardware, grøn energi (i form af solceller) & anvendelse af eksisterende bygninger (ingen nye datacentre).
@@ -132,6 +132,6 @@ open http://172.21.1.34
 ---
 
 <small>
-NordKraft Garage Cloud - Bygget i Ry, Danmark 🇩🇰<br>
+nordkraft.io Garage Cloud - Bygget i Ry, Danmark 🇩🇰<br>
 Kører på genbrugt / refurbished Dell og Raspberry Pi hardware.
 </small>

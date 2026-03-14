@@ -1,6 +1,6 @@
 # Overvåg dine apps med Uptime Kuma
 
-[Uptime Kuma](https://github.com/louislam/uptime-kuma) er et simpelt, self-hosted monitoring-værktøj. Sæt det op én gang, og få besked hvis noget af det du kører på NordKraft går ned.
+[Uptime Kuma](https://github.com/louislam/uptime-kuma) er et simpelt, self-hosted monitoring-værktøj. Sæt det op én gang, og få besked hvis noget af det du kører på nordkraft.io går ned.
 
 **Hvad du får:**
 
@@ -73,7 +73,7 @@ Klik **"Settings" → "Notifications"** og tilføj din foretrukne kanal.
 Populære valg:
 
 - **Email** — simpelt og altid tilgængeligt
-- **Slack / Mattermost** — hvis du allerede kører Mattermost på NordKraft 😄
+- **Slack / Mattermost** — hvis du allerede kører Mattermost på nordkraft.io 😄
 - **Telegram** — hurtigt og gratis
 - **Webhook** — til custom integrations
 

@@ -10,7 +10,7 @@ Denne guide tager dig fra nul til en kørende container på Garage Cloud - trin 
 
 Du skal have følgende klar:
 
-- [x] NordKraft konto (modtaget via email)
+- [x] nordkraft.io konto (modtaget via email)
 - [x] WireGuard VPN installeret og forbundet
 - [x] `nordkraft` CLI installeret
 - [x] GitHub konto (gratis - [opret her](https://github.com/signup))
@@ -58,7 +58,7 @@ nordkraft deploy nginx:alpine --port 80
 
 **Hvad sker der?**
 
-1. NordKraft henter `nginx:alpine` fra Docker Hub (et offentligt bibliotek af containere)
+1. nordkraft.io henter `nginx:alpine` fra Docker Hub (et offentligt bibliotek af containere)
 2. Starter containeren på Garage Cloud hardware
 3. Giver den en privat IP-adresse på dit netværk
 
@@ -242,7 +242,7 @@ podman stop $(podman ps -q)
 
 ## Trin 5: Upload til GitHub
 
-Dit image skal uploades til et **container registry** - et sted hvor NordKraft kan hente det fra. Vi bruger GitHub's gratis registry.
+Dit image skal uploades til et **container registry** - et sted hvor nordkraft.io kan hente det fra. Vi bruger GitHub's gratis registry.
 
 ### Opret adgangstoken på GitHub
 
@@ -274,7 +274,7 @@ podman push ghcr.io/DIT_GITHUB_BRUGERNAVN/hello-nordkraft:v1
 
 ### Gør image offentligt tilgængeligt
 
-GitHub gør nye packages private som standard. For at NordKraft kan hente det:
+GitHub gør nye packages private som standard. For at nordkraft.io kan hente det:
 
 1. Gå til `github.com/DIT_GITHUB_BRUGERNAVN?tab=packages`
 2. Klik på `hello-nordkraft`
@@ -405,9 +405,9 @@ IP-adressen frigives og kan bruges af andre containere.
 
 ---
 
-## Sikkerhed: Hvad NordKraft gør for dig
+## Sikkerhed: Hvad nordkraft.io gør for dig
 
-| Trussel | NordKraft's Beskyttelse |
+| Trussel | nordkraft.io's Beskyttelse |
 |---------|------------------------|
 | Container escape | Kata Containers (VM isolation) |
 | Netværks-sniffing | Isolerede subnets per bruger |

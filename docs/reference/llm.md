@@ -1,6 +1,6 @@
-# NordKraft til AI-assistenter
+# nordkraft.io til AI-assistenter
 
-Denne side er designet til at blive givet til en AI-assistent (ChatGPT, Claude, Copilot m.fl.) som kontekst, så den kan hjælpe dig med at deploye og administrere containere på NordKraft.
+Denne side er designet til at blive givet til en AI-assistent (ChatGPT, Claude, Copilot m.fl.) som kontekst, så den kan hjælpe dig med at deploye og administrere containere på nordkraft.io.
 
 ---
 
@@ -11,7 +11,7 @@ Kopier og indsæt følgende prompt til din AI-assistent:
 !!! example "Prompt til AI"
 
     ```
-    Jeg bruger NordKraft — en dansk edge cloud platform.
+    Jeg bruger nordkraft.io — en dansk edge cloud platform.
     Her er den fulde CLI og API spec:
     https://docs.nordkraft.io/reference/llm/
 
@@ -25,7 +25,7 @@ Eller kopiér hele indholdet nedenfor direkte ind i din samtale.
 ## Maskinelæselig spec
 
 ````markdown
-# NordKraft CLI + API Spec
+# nordkraft.io CLI + API Spec
 
 ## Platform
 - Dansk edge cloud, CLI-first, IPv6-native, WireGuard-autentificeret

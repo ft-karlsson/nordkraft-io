@@ -1,6 +1,6 @@
 # Deploy din egen app
 
-Denne guide tager dig fra en Dockerfile til en kørende app på NordKraft — med dit eget private container registry, så du aldrig behøver at gøre dine images offentlige.
+Denne guide tager dig fra en Dockerfile til en kørende app på nordkraft.io — med dit eget private container registry, så du aldrig behøver at gøre dine images offentlige.
 
 ---
 
@@ -86,7 +86,7 @@ Her er eksempler på de mest almindelige setups:
 
 ## Trin 2: Sæt privat registry op
 
-NordKraft har et indbygget OCI-kompatibelt registry der kører direkte på din instans.
+nordkraft.io har et indbygget OCI-kompatibelt registry der kører direkte på din instans.
 
 ```bash
 nordkraft registry init
@@ -117,7 +117,7 @@ nordkraft registry status
 nordkraft push myapp:v1
 ```
 
-NordKraft bygger automatisk fra din lokale Dockerfile, tagger og pusher til dit registry.
+nordkraft.io bygger automatisk fra din lokale Dockerfile, tagger og pusher til dit registry.
 
 Se hvad der ligger i registry:
 
